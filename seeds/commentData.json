@@ -1,0 +1,37 @@
+[
+  {
+    "user_id": 5,
+    "post_id":1,
+    "dateCreated": "2023-09-01 08:00:00",
+    "dateUpdated": "2023-09-01 10:30:00",
+    "body": "This is the first sample comment."
+  },
+  {
+    "user_id": 4,
+    "post_id":1,
+    "dateCreated": "2023-09-02 12:15:00",
+    "dateUpdated": "2023-09-02 15:45:00",
+    "body": "This is the second sample comment."
+  },
+  {
+    "user_id": 3,
+    "post_id":2,
+    "dateCreated": "2023-09-03 14:20:00",
+    "dateUpdated": "2023-09-03 17:00:00",
+    "body": "This is the third sample comment."
+  },
+  {
+    "user_id": 4,
+    "post_id":3,
+    "dateCreated": "2023-09-01 18:45:00",
+    "dateUpdated": "2023-09-02 09:30:00",
+    "body": "This is another sample comment."
+  },
+  {
+    "user_id": 1,
+    "post_id":4,
+    "dateCreated": "2023-09-01 18:45:00",
+    "dateUpdated": "2023-09-02 09:30:00",
+    "body": "This is yet another sample comment."
+  }
+]
