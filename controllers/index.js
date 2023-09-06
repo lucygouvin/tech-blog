@@ -4,5 +4,7 @@ const dashboardRoutes = require("./dashboardRoutes");
 const postRoutes = require("./postRoutes");
 
 router.use("/", homeRoutes);
+router.use("/dashboard", dashboardRoutes);
+router.use("/post", postRoutes);
 
 module.exports = router;

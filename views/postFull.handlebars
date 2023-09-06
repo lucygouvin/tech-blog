@@ -1,0 +1,19 @@
+{{!-- Takes a post object --}}
+<section class="post-full">
+<h2 class="post-title">{{plainPost.title}}</h2>
+<p class = "post-author">{{plainPost.userId}}</p>
+<p class="post-created">{{plainPost.dateCreated}}</p>
+<p class="post-body">{{plainPost.body}}</p>
+</section>
+{{!-- TODO Add partials for associated comments --}}
+
+<button id="commentButton">Comment</button>
+<section class="comment-form" id="commentForm">
+    {{!-- TODO Use form action and method to make a post request with the comment data --}}
+    <form>
+        <input type="textarea" class="comment-body">
+    </form>
+    <button type="submit">Submit</button>
+</section>
+
+<script src="/js/addComment.js"></script>
