@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Post, Comment, User } = require("../models");
 
-router.get("/:id", async (req, res) => {
+router.get("/view/:id", async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
             include: { all: true, nested: true },
@@ -14,7 +14,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.post("/:id", async (req, res) => {
+router.post("/comment/:id", async (req, res) => {
     try {
         // TODO add in logged in user info"
         const { cText } = req.body;
@@ -25,9 +25,10 @@ router.post("/:id", async (req, res) => {
         };
 
         await Comment.create(newComment);
-        res.redirect(`/post/${req.params.id}`);
+        res.redirect(`/post/view/${req.params.id}`);
     } catch (err) {
         console.log(err);
     }
 });
+
 module.exports = router;

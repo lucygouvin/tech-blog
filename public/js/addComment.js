@@ -17,7 +17,7 @@ commentSubmit.addEventListener("click", () => {
 });
 
 function postComment(comment) {
-    fetch("/post/2", {
+    fetch("/post/comment/2", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
