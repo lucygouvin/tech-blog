@@ -14,10 +14,6 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    req.session.loggedIn = true;
-    req.session.save();
-    console.log("logged in");
-    console.log(req.session.cookie);
     res.render("login");
 });
 
