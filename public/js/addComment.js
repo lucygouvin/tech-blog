@@ -1,35 +1,31 @@
 const commentButton = document.getElementById("commentButton");
 const commentForm = document.getElementById("commentForm");
-const commentSubmit = document.getElementById("commentSubmit");
-const commentBody = document.getElementById("commentBody");
+
 commentForm.style.visibility = "hidden";
 
 commentButton.addEventListener("click", () => {
     commentForm.style.visibility = "visible";
 });
 
-commentSubmit.addEventListener("click", () => {
-    const bodyText = {
-        cText: commentBody.value,
-    };
+const commentHandler = async (e) => {
+    e.preventDefault();
+    const commentBody = document.getElementById("commentBody").value.trim();
+    const idString = window.location.href.split("/").pop();
 
-    postComment(bodyText);
-});
-
-function postComment(comment) {
-    fetch("/post/comment/2", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(comment),
-    })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log("Successful POST request:", data);
-            return data;
-        })
-        .catch((error) => {
-            console.error("Error in POST request:", error);
+    if (commentBody) {
+        const response = await fetch(`/post/comment/${idString}`, {
+            method: "POST",
+            body: JSON.stringify({ commentBody }),
+            headers: { "Content-Type": "application/json" },
         });
-}
+        if (response.ok) {
+            document.location.replace(`/post/view/${idString}`);
+        } else {
+            alert("Failed to add comment.");
+        }
+    }
+};
+
+document
+    .getElementById("commentSubmit")
+    .addEventListener("click", commentHandler);
