@@ -19,17 +19,16 @@ router.get("/new", (req, res) => {
 
 router.post("/new", async (req, res) => {
     try {
-        // TODO add in logged in user info
-        const { titleContent, bodyContent } = req.body;
-        const newPost = {
+        await Post.create({
+            // TODO: add logged in user info
             userId: 1,
-            title: titleContent,
-            body: bodyContent,
-        };
-        await Post.create(newPost);
-        res.redirect(`/post/view/2`);
+            title: req.body.postTitle,
+            body: req.body.postBody,
+        });
     } catch (err) {
         console.log(err);
+        res.status(500).json(err);
     }
+    res.status(200).send();
 });
 module.exports = router;

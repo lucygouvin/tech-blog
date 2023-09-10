@@ -16,19 +16,17 @@ router.get("/view/:id", async (req, res) => {
 
 router.post("/comment/:id", async (req, res) => {
     try {
-        // TODO add in logged in user info"
-        const { cText } = req.body;
-        const newComment = {
+        await Comment.create({
+            // TODO add in logged in user info
             userId: 1,
             postId: req.params.id,
-            body: cText,
-        };
-
-        await Comment.create(newComment);
-        res.redirect(`/post/view/${req.params.id}`);
+            body: req.body.commentBody,
+        });
     } catch (err) {
         console.log(err);
+        res.status(500).json(err);
     }
+    res.status(200).json({ id: `${req.params.id}` });
 });
 
 module.exports = router;
