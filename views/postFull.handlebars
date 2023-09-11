@@ -1,21 +1,34 @@
 {{!-- Takes a post object --}}
 <section class="post-full">
-<h2 class="post-title">{{plainPost.title}}</h2>
-<p class = "post-author">{{plainPost.user.username}}</p>
-<p class="post-created">{{plainPost.dateCreated}}</p>
-<p class="post-body">{{plainPost.body}}</p>
+<section class="card post-preview m-3">
+    <div class="card-header d-flex flex-row justify-content-between">
+        {{!-- The post title is the link --}}
+        <a href="/post/view/{{id}}" class="post-title">{{plainPost.title}}</a>
+        <p>Posted by {{plainPost.user.username}} on {{format_date plainPost.dateCreated}}</p>
+    </div>
+    <div class="card-body">
+        <p class="post-body">{{plainPost.body}}</p>
+    </div>
+</section>
+
+    {{!-- {{#if loggedIn}}
+    {{#if checkAuthor "user" "plainPost.user.username"}}
+    <p>Edit post</p>
+    {{/if}}
+    {{/if}} --}}
 </section>
 {{#each plainPost.comments as |comment|}}
 {{> commentView}}
 {{/each}}
-<button id="commentButton">Comment</button>
+{{#if loggedIn}}
+<button class="btn btn-outline-primary" id="commentButton">Comment</button>
 <section class="comment-form" id="commentForm">
-    {{!-- TODO Use form action and method to make a post request with the comment data --}}
     <form>
-        <input type="textarea" class="comment-body" id="commentBody">
-    <button type="submit" id="commentSubmit">Submit</button>
+        <input type="textarea" class="comment-body form-control m-2" id="commentBody" placeholder="Enter comment">
+        <button class="btn btn-outline-primary" type="submit" id="commentSubmit">Submit</button>
     </form>
-    
+
 </section>
+{{/if}}
 
 <script src="/js/addComment.js"></script>

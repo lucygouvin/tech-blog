@@ -1,13 +1,16 @@
+{{#if loggedIn}}
 <h1>New Post</h1>
 <section class="new-post">
     <form class="post-form">
-        <label for="post-title">Title:</label>
-        <input type="text" class="post-title" id="postTitle" name="post-title">
-        <label for="post-body">Body:</label>
-        <input type="textarea" class="post-body" id="postBody" name="post-body">
-    <button type="submit" id="postSubmit">Submit</button>
+        <label for="post-title" class="form-label">Title:</label>
+        <input type="text" class="post-title form-control" id="postTitle" name="post-title">
+        <label for="post-body" class="form-label">Body:</label>
+        <input type="textarea" class="post-body form-control" id="postBody" name="post-body">
+    <button type="submit" id="postSubmit" class="btn btn-outline-primary my-1">Submit</button>
     </form>
     
 </section>
-
+{{else}}
+<p>Please <span><a href="/login">log in</a></span> to view your dashboard</p>
+{{/if}}
 <script src="/js/newPost.js"></script>

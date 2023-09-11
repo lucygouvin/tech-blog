@@ -7,7 +7,11 @@ router.get("/view/:id", async (req, res) => {
             include: { all: true, nested: true },
         });
         const plainPost = postData.get({ plain: true });
-        res.render("postFull", { plainPost });
+        res.render("postFull", {
+            plainPost,
+            loggedIn: req.session.loggedIn,
+            user: req.session.user,
+        });
     } catch (err) {
         console.log(err);
         res.json(err);
@@ -17,8 +21,7 @@ router.get("/view/:id", async (req, res) => {
 router.post("/comment/:id", async (req, res) => {
     try {
         await Comment.create({
-            // TODO add in logged in user info
-            userId: 1,
+            userId: req.session.userid,
             postId: req.params.id,
             body: req.body.commentBody,
         });

@@ -1,9 +1,11 @@
 {{!-- Needs to take in a Post object --}}
-<section class="card post-preview">
-    {{!-- The post title is the link --}}
-<a href="/post/view/{{id}}" class="post-title">{{title}}</a>
-<p class = "post-author">{{user.username}}</p>
-<p class="post-created">{{dateCreated}}</p>
-<p class="post-body">{{body}}</p>
-
+<section class="card post-preview m-3">
+    <div class="card-header d-flex flex-row justify-content-between">
+        {{!-- The post title is the link --}}
+        <a href="/post/view/{{id}}" class="post-title">{{title}}</a>
+        <p>Posted by {{user.username}} on {{format_date dateCreated}}</p>
+    </div>
+    <div class="card-body">
+        <p class="post-body">{{body}}</p>
+    </div>
 </section>
