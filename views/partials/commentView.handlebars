@@ -1,8 +1,11 @@
 {{!-- Takes a comment model --}}
 <section class="comment-view">
-    <p>{{user.username}}</p>
-    <p>{{dateCreated}}</p>
-    <p>{{body}}</p>
-
-
+    <section class="card post-preview ms-5 my-3 me-3">
+    <div class="card-header d-flex flex-row-reverse">
+        <p>Posted by {{user.username}} on {{format_date dateCreated}}</p>
+    </div>
+    <div class="card-body">
+        <p class="post-body">{{body}}</p>
+    </div>
+</section>
 </section>

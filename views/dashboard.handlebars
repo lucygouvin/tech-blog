@@ -1,6 +1,9 @@
 <h1>Dashboard</h1>
+{{#if loggedIn}}
 {{#each plainPosts as |post|}}
 {{> postPreview}}
 {{/each}}
-
-<button class="new-post" id="newPost"><a href="/dashboard/new">New Post</a></button>
+{{else}}
+<p>Please <span><a href="/login">log in</a></span> to view your dashboard</p>
+{{/if}}
+<button class="btn btn-outline-primary new-post col-2" id="newPost"><a href="/dashboard/new">New Post</a></button>
