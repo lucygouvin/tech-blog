@@ -1,4 +1,4 @@
 module.exports = {
-    checkAuthor: (currentUser, author) => currentUser === author,
+    // Format the date to be easier to read
     format_date: (date) => date.toLocaleDateString(),
 };

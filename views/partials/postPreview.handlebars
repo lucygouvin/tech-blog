@@ -1,8 +1,8 @@
 {{!-- Needs to take in a Post object --}}
 <section class="card post-preview m-3">
     <div class="card-header d-flex flex-row justify-content-between">
-        {{!-- The post title is the link --}}
         <a href="/post/view/{{id}}" class="post-title">{{title}}</a>
+        {{!-- Dasboard posts do not need to show the username, so only render that part of the string if the data is provided --}}
         <p> {{#if user.username}}Posted by {{user.username}} on{{/if}} {{format_date dateCreated}}</p>
     </div>
     <div class="card-body">

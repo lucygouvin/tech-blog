@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- Reset CSS --}}
     <link rel="stylesheet" href="../../public/css/reset.css">
+    {{!-- Bootstrap CSS --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        {{!-- Style CSS --}}
     <link rel="stylesheet" href="../../public/css/style.css">
 
     <title>Tech Blog</title>
@@ -22,9 +25,11 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item nav-link"><a href="/">Home</a></li>
                     <li class="nav-item nav-link"><a href="/dashboard">Dashboard</a></li>
+                    {{!-- Show log out if the user is logged in --}}
                     {{#if loggedIn}}
                     <li class="nav-item nav-link" id="logout"><a href="#">Log Out</a></li>
                     {{else}}
+                    {{!-- Show log in and sign up options if user is not logged in --}}
                     <li class="nav-item nav-link"><a href="/login">Log In</a></li>
                     <li class="nav-item nav-link"><a href="/signup">Sign Up</a></li>
                     {{/if}}
