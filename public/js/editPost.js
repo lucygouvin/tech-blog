@@ -3,7 +3,7 @@ const editHandler = async (e) => {
 
     const newTitle = document.getElementById("edit-title").value.trim();
     const newBody = document.getElementById("edit-body").value.trim();
-// If there is content in the title and body, update the post record
+    // If there is content in the title and body, update the post record
     if (newTitle && newBody) {
         const idString = window.location.href.split("/").pop();
         const response = await fetch(`/post/edit/${idString}`, {
@@ -23,7 +23,7 @@ const editHandler = async (e) => {
 
 const deleteHandler = async (e) => {
     e.preventDefault();
-// Make a delete request for this post
+    // Make a delete request for this post
     const idString = window.location.href.split("/").pop();
     const response = await fetch(`/post/delete/${idString}`, {
         method: "DELETE",
