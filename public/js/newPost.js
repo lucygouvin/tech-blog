@@ -3,7 +3,7 @@ const postHandler = async (e) => {
 
     const postTitle = document.getElementById("postTitle").value.trim();
     const postBody = document.getElementById("postBody").value.trim();
-// If the user entered content, send a post request to create a new post object
+    // If the user entered content, send a post request to create a new post object
     if (postTitle && postBody) {
         const response = await fetch("/dashboard/new", {
             method: "POST",

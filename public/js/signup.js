@@ -3,7 +3,7 @@ const signupFormHandler = async (event) => {
     const username = document.querySelector("#username-signup").value.trim();
     const email = document.querySelector("#email-signup").value.trim();
     const password = document.querySelector("#password-signup").value.trim();
-// If the user entered data, send a post request to make a new user object
+    // If the user entered data, send a post request to make a new user object
     if (username && email && password) {
         const response = await fetch("/user", {
             method: "POST",
