@@ -3,7 +3,7 @@
     <div class="card-header d-flex flex-row justify-content-between">
         {{!-- The post title is the link --}}
         <a href="/post/view/{{id}}" class="post-title">{{title}}</a>
-        <p>Posted by {{user.username}} on {{format_date dateCreated}}</p>
+        <p> {{#if user.username}}Posted by {{user.username}} on{{/if}} {{format_date dateCreated}}</p>
     </div>
     <div class="card-body">
         <p class="post-body">{{body}}</p>

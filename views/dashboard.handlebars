@@ -3,7 +3,7 @@
 {{#each plainPosts as |post|}}
 {{> postPreview}}
 {{/each}}
-<button class="btn btn-outline-primary new-post col-2" id="newPost"><a href="/dashboard/new">New Post</a></button>
+<a href="/dashboard/new"><button class="btn btn-outline-primary new-post col-2" id="newPost">New Post</button></a>
 
 {{else}}
 <p>Please <span><a href="/login">log in</a></span> to view your dashboard</p>
