@@ -2,9 +2,9 @@
 <section class="post-full">
     <section class="card post-preview m-3">
         <div class="card-header d-flex flex-row justify-content-between">
-            {{!-- The post title is the link --}}
            {{plainPost.title}}
             <div class="d-flex">
+                {{!-- If the user is logged in, and they are the author of the post, show the option to edit the post --}}
                  {{#if loggedIn}}
             {{#if author}}
             <p class="pe-3"><a href="/post/edit/{{plainPost.id}}"><u>Edit post</u></a></p>
@@ -19,13 +19,14 @@
         </div>
     </section>
 
-
+{{!-- For each associated comment, use the commentView partial to show the information --}}
 </section>
 {{#each plainPost.comments as |comment|}}
 {{> commentView}}
 {{/each}}
 {{#if loggedIn}}
 <button class="btn btn-outline-primary" id="commentButton">Comment</button>
+{{!-- Comment form hidden by default, until the user presses the Comment button --}}
 <section class="comment-form" id="commentForm">
     <form>
         <input type="textarea" class="comment-body form-control m-2" id="commentBody" placeholder="Enter comment">

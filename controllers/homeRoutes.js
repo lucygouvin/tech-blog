@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Post, User } = require("../models");
 
+// GET all the posts in the database
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -13,10 +14,12 @@ router.get("/", async (req, res) => {
     }
 });
 
+// GET the login page
 router.get("/login", (req, res) => {
     res.render("login");
 });
 
+// GET the signup page
 router.get("/signup", (req, res) => {
     res.render("signup");
 });

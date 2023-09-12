@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { Post, User } = require("../models");
+const { Post } = require("../models");
 
+// GET all the posts that the logged in user has made
 router.get("/", async (req, res) => {
-    // TODO: only get posts of logged in user
     try {
         if (req.session.userid) {
             const postData = await Post.findAll({
@@ -23,14 +23,17 @@ router.get("/", async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err);
+        res.status(500).json(err);
+
     }
 });
 
+// GET the new post page
 router.get("/new", (req, res) => {
     res.render("newPost", { loggedIn: req.session.loggedIn });
 });
 
+// POST the new post, save it to the database
 router.post("/new", async (req, res) => {
     try {
         await Post.create({
@@ -39,7 +42,6 @@ router.post("/new", async (req, res) => {
             body: req.body.postBody,
         });
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
     res.status(200).send();

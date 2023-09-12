@@ -1,4 +1,5 @@
 <h1>Dashboard</h1>
+{{!-- If user is logged in, show their posts.  --}}
 {{#if loggedIn}}
 {{#each plainPosts as |post|}}
 {{> postPreview}}
@@ -6,5 +7,6 @@
 <a href="/dashboard/new"><button class="btn btn-outline-primary new-post col-2" id="newPost">New Post</button></a>
 
 {{else}}
+{{!-- If not logged in, prompt them to log in --}}
 <p>Please <span><a href="/login">log in</a></span> to view your dashboard</p>
 {{/if}}

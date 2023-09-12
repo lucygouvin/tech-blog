@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const { Post, Comment, User } = require("../models");
+const { Post, Comment } = require("../models");
 
+// GET the view of a single post, by id
 router.get("/view/:id", async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -14,11 +15,11 @@ router.get("/view/:id", async (req, res) => {
             author: postData.userId === req.session.userid,
         });
     } catch (err) {
-        console.log(err);
         res.json(err);
     }
 });
 
+// POST a comment to a specific post, by the post's id
 router.post("/comment/:id", async (req, res) => {
     try {
         await Comment.create({
@@ -27,12 +28,12 @@ router.post("/comment/:id", async (req, res) => {
             body: req.body.commentBody,
         });
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
     res.status(200).json({ id: `${req.params.id}` });
 });
 
+// GET the page to allow the user to edit a specific post
 router.get("/edit/:id", async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -46,11 +47,11 @@ router.get("/edit/:id", async (req, res) => {
             author: postData.userId === req.session.userid,
         });
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });
 
+// PUT the updated post data, updating the existing post object
 router.put("/edit/:id", async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
@@ -60,19 +61,18 @@ router.put("/edit/:id", async (req, res) => {
             body: req.body.newBody,
         });
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
     res.status(200).send();
 });
 
+// DELETE the post, by id
 router.delete("/delete/:id", async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
 
         await postData.destroy();
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
     res.status(200).send();

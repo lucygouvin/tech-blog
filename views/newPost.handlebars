@@ -1,3 +1,4 @@
+{{!-- Only allow the user to make a new post if they're logged in --}}
 {{#if loggedIn}}
 <h1>New Post</h1>
 <section class="new-post">
@@ -11,6 +12,7 @@
     
 </section>
 {{else}}
+{{!-- If not logged in, prompt them to log in --}}
 <p>Please <span><a href="/login">log in</a></span> to view your dashboard</p>
 {{/if}}
 <script src="/js/newPost.js"></script>

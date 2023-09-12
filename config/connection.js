@@ -1,7 +1,7 @@
-// comment
 const Sequelize = require("sequelize");
 require("dotenv").config();
 
+// Change sequelize credentials depending on if it's deployed or local
 let sequelize;
 if (process.env.JAWSDB_URL) {
     sequelize = new Sequelize(process.env.JAWSDB_URL);
