@@ -17,4 +17,5 @@ const postHandler = async (e) => {
         }
     }
 };
+// comment
 document.getElementById("postSubmit").addEventListener("click", postHandler);
