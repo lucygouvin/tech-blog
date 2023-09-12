@@ -1,21 +1,25 @@
 {{!-- Takes a post object --}}
 <section class="post-full">
-<section class="card post-preview m-3">
-    <div class="card-header d-flex flex-row justify-content-between">
-        {{!-- The post title is the link --}}
-        <a href="/post/view/{{id}}" class="post-title">{{plainPost.title}}</a>
-        <p>Posted by {{plainPost.user.username}} on {{format_date plainPost.dateCreated}}</p>
-    </div>
-    <div class="card-body">
-        <p class="post-body">{{plainPost.body}}</p>
-    </div>
-</section>
+    <section class="card post-preview m-3">
+        <div class="card-header d-flex flex-row justify-content-between">
+            {{!-- The post title is the link --}}
+           {{plainPost.title}}
+            <div class="d-flex">
+                 {{#if loggedIn}}
+            {{#if author}}
+            <p class="pe-3"><a href="/post/edit/{{plainPost.id}}"><u>Edit post</u></a></p>
+            {{/if}}
+            {{/if}}
+            <p>Posted by {{plainPost.user.username}} on {{format_date plainPost.dateCreated}}</p>
+            </div>
+           
+        </div>
+        <div class="card-body">
+            <p class="post-body">{{plainPost.body}}</p>
+        </div>
+    </section>
 
-    {{!-- {{#if loggedIn}}
-    {{#if checkAuthor "user" "plainPost.user.username"}}
-    <p>Edit post</p>
-    {{/if}}
-    {{/if}} --}}
+
 </section>
 {{#each plainPost.comments as |comment|}}
 {{> commentView}}
